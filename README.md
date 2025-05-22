@@ -38,5 +38,7 @@ O projeto foi dividido em 3 releases (0.1v, 0.2v e 1.0v), cada uma adicionando n
 ## Estrutura do Projeto
 
 **scr/main/java**: Código fonte principal.
+
 **scr/test/java**: Testes unitários JUnit.
+
 **docs**: Documentação html javaDoc.
