@@ -12,7 +12,6 @@ public class InterfaceGraficaTest {
     private InterfaceGrafica interfaceGrafica;
     private List<Cartas> cartas;
 
-
     @BeforeEach
     void setUp() throws Exception{
         SwingUtilities.invokeAndWait(() ->{
@@ -36,7 +35,7 @@ public class InterfaceGraficaTest {
     }
 
     @Test
-    void testCliqueEmCartaNaoDeveVirar() throws Exception{
+    void testCliqueNaMesmaCartaNaoDeveVirar() throws Exception{
         Cartas carta = cartas.get(0);
         SwingUtilities.invokeAndWait(carta::doClick);
 
