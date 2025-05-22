@@ -30,7 +30,9 @@ O projeto foi dividido em 3 releases (0.1v, 0.2v e 1.0v), cada uma adicionando n
 
 ## Funcionalidades da Versão Atual
 – Implementação da interface gráfica com Swing, exibindo cartas viradas para baixo.
+
 – Lógica para virar as cartas e exibir o valor delas.
+
 – Contabilização de tentativas.
 
 ## Estrutura do Projeto
