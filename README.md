@@ -1,2 +1,2 @@
-# JogoMemoriaPOO2
-Um projeto de jogo da memória elaborado pelo professor para ensinar a desenvolver um projeto do zero da maneira correta. Documentando e realizando testes unitários.
+# Sobre
+Este projeto é um jogo da memória, desenvolvido com o objetivo de exercitar um projeto de software da maneira correta. O projeto foi desenvolvido em etapas contendo 3 releases, sendo elas: 0.1v, 0.2v e 1.0v. Em cada release serão desenvolvidas funções específicas, formando assim no final um jogo da memória completo e funcional. Antes de serem lançados, em cada release será feito e documentado uma bateria de testes usando JUnit que estará disponível no arquivo testes.txt na própria pasta do projeto

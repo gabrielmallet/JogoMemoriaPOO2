@@ -1,5 +1,4 @@
 import javax.swing.*;
-
 /**
  * Classe que gera a logica das cartas.
  * @author Gabriel
@@ -14,7 +13,6 @@ public class Cartas extends JButton {
     private int height = 100;
     private int width = 100;
     private boolean virada = false;
-
     /**
      * Metodo principal usado para gerar as cartas.
      * @param nome Nome da carta.
@@ -25,7 +23,6 @@ public class Cartas extends JButton {
         this.conteudo = nome;
         setBounds(x,y,width,height);
     }
-
     /**
      * Processamento lógico para virar a carta.
      */
@@ -33,7 +30,6 @@ public class Cartas extends JButton {
         virada = !virada;
         setText(virada ? conteudo : esconder);
     }
-
     /**
      * Retorna se a carta esta virada ou não.
      * @return Estado atual da carta.
@@ -41,7 +37,6 @@ public class Cartas extends JButton {
     public boolean isVirada(){
         return virada;
     }
-
     /**
      * Retorna o que esta escrito na carta.
      * @return Retorna o conteudo da carta.

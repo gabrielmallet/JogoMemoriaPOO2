@@ -70,4 +70,9 @@ public class InterfaceGrafica extends JFrame {
         }
 
     }
+
+    public int getTentativas(){
+        return tentativas;
+    }
+
 }
