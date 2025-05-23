@@ -29,12 +29,19 @@ O projeto foi dividido em 3 releases (0.1v, 0.2v e 1.0v), cada uma adicionando n
 2. Execute a classe **Main** em **src/main/java**.
 
 ## Funcionalidades da Versão Atual
+
+### 0.1v
 – Implementação da interface gráfica com Swing, exibindo cartas viradas para baixo.
 
 – Lógica para virar as cartas e exibir o valor delas.
 
 – Contabilização de tentativas.
+### 0.2v (atual)
+– Implementação da lógica para comparar as cartas viradas e verificar se são iguais.
 
+– Condição de fim de jogo, exibindo a pontuação (número de tentativas) final.
+
+– Botão para reiniciar o jogo.
 ## Estrutura do Projeto
 
 **scr/main/java**: Código fonte principal.

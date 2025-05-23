@@ -2,7 +2,7 @@ import javax.swing.*;
 /**
  * Classe que gera a logica das cartas.
  * @author Gabriel
- * @version 0.1
+ * @version 0.2
  * @see javax.swing.JButton
  * @see java.awt.Component
  * @see javax.swing.AbstractButton
@@ -10,8 +10,8 @@ import javax.swing.*;
 public class Cartas extends JButton {
     private String conteudo;
     private String esconder = "";
-    private int height = 100;
-    private int width = 100;
+    private int height = 100;//define o tamanho padrão das cartas
+    private int width = 100;//define o tamanho padrão das cartas
     private boolean virada = false;
     /**
      * Metodo principal usado para gerar as cartas.
