@@ -134,7 +134,8 @@ public class InterfaceGrafica extends JFrame {
             }
 
         }
-        verificarcondicaoFinalJogoEFinalizar();
+
+        if (pontuacao == 2) {janelaVencedor();} //Verifica se o jogo atingiu a condição de vitória
     }
 
     /**
@@ -150,17 +151,6 @@ public class InterfaceGrafica extends JFrame {
         String conteudocarta2 = cartavirada2.getConteudo();
 
         return conteudocarta1.equals(conteudocarta2);
-    }
-
-    /**
-     * Executado na para verificar se o jogo atingiu a confição final, caso tenha atingido executa o metodo janelaVencedor.
-     * @since 0.2v
-     * @see JOptionPane
-     */
-    private void verificarcondicaoFinalJogoEFinalizar(){
-        if(pontuacao == 2){
-            janelaVencedor();
-        }
     }
 
     private void janelaVencedor(){
@@ -199,7 +189,6 @@ public class InterfaceGrafica extends JFrame {
 
                 pontuacaojogador.gerarJSON();
 
-
                 vitorias++;
                 pontuacao = 0;
                 tentativas = 0;
@@ -212,7 +201,6 @@ public class InterfaceGrafica extends JFrame {
             }
         });
 
-
         janelaVencedor.setVisible(true);
         janelaVencedor.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
     }
@@ -221,7 +209,7 @@ public class InterfaceGrafica extends JFrame {
         janelaTop10Vencedores = new JFrame("PLACAR TOP 10 JOGADORES");
         janelaTop10Vencedores.setSize(400,300);
         janelaTop10Vencedores.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-        janelaTop10Vencedores.setLocationRelativeTo(null);
+        janelaTop10Vencedores.setLocationRelativeTo( null);
 
         DefaultTableModel model = new DefaultTableModel();
         model.addColumn("Posição");
@@ -240,6 +228,7 @@ public class InterfaceGrafica extends JFrame {
         }
 
         JTable tabela = new JTable(model);
+        tabela.setEnabled(false);
         JScrollPane scrollPaneJanelaTop10 = new JScrollPane(tabela);
         janelaTop10Vencedores.add(scrollPaneJanelaTop10);
 

@@ -32,13 +32,10 @@ public class PontuacaoJogador {
 
     public void setNomeJogador(String nomeJogador){
         this.nomeJogador = nomeJogador;
-
-        System.out.println(nomeJogador);
     }
+
     public void setTentativasJogador(int tentativas){
         this.tentativas = tentativas;
-
-        System.out.print(tentativas);
     }
 
     /**
