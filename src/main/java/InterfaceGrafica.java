@@ -1,6 +1,8 @@
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.security.cert.PolicyNode;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,6 +26,7 @@ public class InterfaceGrafica extends JFrame {
     private JLabel tentativastexto;
     private final List<Cartas> cartasViradas = new ArrayList<>();
     private final List<Cartas> cartasPontuadas = new ArrayList<>();
+    private JFrame janelaVencedor;
 
     /**
      * Desenha a Interface gráfica do jogo.
@@ -119,7 +122,7 @@ public class InterfaceGrafica extends JFrame {
             }
 
         }
-        verificarcondiçãoFinalJogoEFinalizar();
+        verificarcondicaoFinalJogoEFinalizar();
     }
 
     /**
@@ -142,9 +145,9 @@ public class InterfaceGrafica extends JFrame {
      * @since 0.2v
      * @see JOptionPane
      */
-    private void verificarcondiçãoFinalJogoEFinalizar(){
+    private void verificarcondicaoFinalJogoEFinalizar(){
         if(pontuacao == 2){
-            JOptionPane.showMessageDialog(null,"VOCE VENCEU!!!!");
+            janelaVencedor();
             vitorias++;
             pontuacao = 0;
             tentativas = 0;
@@ -153,6 +156,51 @@ public class InterfaceGrafica extends JFrame {
             cartasPontuadas.forEach(Cartas::virar);
             cartasPontuadas.clear();
         }
+    }
+
+    private void janelaVencedor(){
+        janelaVencedor = new JFrame("VOCE VENCEU!!!");
+        janelaVencedor.setSize(500,500);
+        janelaVencedor.setLocationRelativeTo(null);
+        janelaVencedor.setLayout(null);
+
+        JLabel textoDigiteSeuNome = new JLabel("Digite seu nome:");
+        textoDigiteSeuNome.setBounds(10,0,100,30);
+        janelaVencedor.add(textoDigiteSeuNome);
+
+        JTextField textoJanelaVencedorNomeJogador = new JTextField();
+        textoJanelaVencedorNomeJogador.setBounds(130,0,200,30);
+        janelaVencedor.add(textoJanelaVencedorNomeJogador);
+
+        JLabel textoJanelaVencedorPontuacaoJogador = new JLabel("Sua pontuação foi: " + pontuacao);
+        textoJanelaVencedorPontuacaoJogador.setBounds(150,50,150,50);
+        janelaVencedor.add(textoJanelaVencedorPontuacaoJogador);
+
+        JLabel textoJanelaVencedorTentativasJogador = new JLabel("Suas tentativas foram: " + tentativas);
+        textoJanelaVencedorTentativasJogador.setBounds(150,100,150,50);
+        janelaVencedor.add(textoJanelaVencedorTentativasJogador);
+
+        JButton botaoJanelaVencedorConfirmar = new JButton("Confirmar");
+        botaoJanelaVencedorConfirmar.setBounds(175,320,100,50);
+        janelaVencedor.add(botaoJanelaVencedorConfirmar);
+        botaoJanelaVencedorConfirmar.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                PontuacaoJogador pontuacaojogador = new PontuacaoJogador();
+                String nomeJogador = textoJanelaVencedorNomeJogador.getText();
+
+                pontuacaojogador.setNomeJogador(nomeJogador);
+                pontuacaojogador.setTentativasJogador(tentativas);
+
+                pontuacaojogador.gerarJSON();
+
+                janelaVencedor.dispose();
+            }
+        });
+
+
+        janelaVencedor.setVisible(true);
+        janelaVencedor.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
     }
 
     /**
