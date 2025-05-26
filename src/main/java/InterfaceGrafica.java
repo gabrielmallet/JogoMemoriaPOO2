@@ -1,4 +1,5 @@
 import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -27,6 +28,7 @@ public class InterfaceGrafica extends JFrame {
     private final List<Cartas> cartasViradas = new ArrayList<>();
     private final List<Cartas> cartasPontuadas = new ArrayList<>();
     private JFrame janelaVencedor;
+    private JFrame janelaTop10Vencedores;
 
     /**
      * Desenha a Interface gráfica do jogo.
@@ -63,6 +65,16 @@ public class InterfaceGrafica extends JFrame {
                 pontuacao = 0;
                 atualizarTextoPontuacao();
                 atualizarTextoTentativas();
+            }
+        });
+
+        JButton botaoPlacarJogadoresTop10 = new JButton("Placar");
+        botaoPlacarJogadoresTop10.setBounds(500,900,80,50);
+        add(botaoPlacarJogadoresTop10);
+        botaoPlacarJogadoresTop10.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                janelaPlacarTop10Vencedores();
             }
         });
 
@@ -141,20 +153,13 @@ public class InterfaceGrafica extends JFrame {
     }
 
     /**
-     * Executado na para verificar se o jogo atingiu a confição final e caso tenha atingido finalzia o jogo, limpando todos os dados.
+     * Executado na para verificar se o jogo atingiu a confição final, caso tenha atingido executa o metodo janelaVencedor.
      * @since 0.2v
      * @see JOptionPane
      */
     private void verificarcondicaoFinalJogoEFinalizar(){
         if(pontuacao == 2){
             janelaVencedor();
-            vitorias++;
-            pontuacao = 0;
-            tentativas = 0;
-            atualizarTextoPontuacao();
-            atualizarTextoTentativas();
-            cartasPontuadas.forEach(Cartas::virar);
-            cartasPontuadas.clear();
         }
     }
 
@@ -194,6 +199,15 @@ public class InterfaceGrafica extends JFrame {
 
                 pontuacaojogador.gerarJSON();
 
+
+                vitorias++;
+                pontuacao = 0;
+                tentativas = 0;
+                atualizarTextoPontuacao();
+                atualizarTextoTentativas();
+                cartasPontuadas.forEach(Cartas::virar);
+                cartasPontuadas.clear();
+
                 janelaVencedor.dispose();
             }
         });
@@ -201,6 +215,35 @@ public class InterfaceGrafica extends JFrame {
 
         janelaVencedor.setVisible(true);
         janelaVencedor.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+    }
+
+    private void janelaPlacarTop10Vencedores(){
+        janelaTop10Vencedores = new JFrame("PLACAR TOP 10 JOGADORES");
+        janelaTop10Vencedores.setSize(400,300);
+        janelaTop10Vencedores.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+        janelaTop10Vencedores.setLocationRelativeTo(null);
+
+        DefaultTableModel model = new DefaultTableModel();
+        model.addColumn("Posição");
+        model.addColumn("Jogador");
+        model.addColumn("Tentativas");
+
+        List<PontuacaoJogador> top10jogadores = PontuacaoJogador.getTop10Jogadores();
+
+        for(int i = 0; i < top10jogadores.size(); i++){
+            PontuacaoJogador jogador = top10jogadores.get(i);
+            model.addRow(new Object[]{
+                    i + 1,
+                    jogador.getNomeJogador(),
+                    jogador.getTentativasJogador()
+            });
+        }
+
+        JTable tabela = new JTable(model);
+        JScrollPane scrollPaneJanelaTop10 = new JScrollPane(tabela);
+        janelaTop10Vencedores.add(scrollPaneJanelaTop10);
+
+        janelaTop10Vencedores.setVisible(true);
     }
 
     /**
