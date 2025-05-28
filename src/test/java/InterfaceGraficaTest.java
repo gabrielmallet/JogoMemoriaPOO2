@@ -3,6 +3,7 @@ import org.junit.jupiter.api.Test;
 
 import javax.swing.*;
 import java.awt.*;
+import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -151,7 +152,7 @@ public class InterfaceGraficaTest {
         Cartas carta3 = cartas.get(2);
         Cartas carta4 = cartas.get(3);
         Cartas carta5 = cartas.get(4);
-        JButton reset = botoes.get(1);
+        JButton reset = botoes.get(0);
 
         SwingUtilities.invokeAndWait(() ->{
             carta4.doClick();
@@ -188,6 +189,8 @@ public class InterfaceGraficaTest {
             carta3.doClick();
             carta4.doClick();
         });
+
+        Thread.sleep(5000);
         assertEquals(0,interfaceGrafica.getTentativas());
         assertEquals(0,interfaceGrafica.getPontuacao());
         assertEquals(1,interfaceGrafica.getVitorias());
@@ -198,7 +201,6 @@ public class InterfaceGraficaTest {
     }
 
     //Daqui para baixo são métodos que registra botões em ArraysLists, facilitando os testes.
-
     /**
      * Usado nos testes, esse metodo cria uma lista com as cartas presentes na interface grafica do jogo.
      * @return Retorna uma lista com as cartas presentes na interface grafica do jogo.

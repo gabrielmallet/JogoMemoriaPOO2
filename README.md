@@ -36,16 +36,28 @@ O projeto foi dividido em 3 releases (0.1v, 0.2v e 1.0v), cada uma adicionando n
 – Lógica para virar as cartas e exibir o valor delas.
 
 – Contabilização de tentativas.
-### 0.2v (atual)
+### 0.2v
 – Implementação da lógica para comparar as cartas viradas e verificar se são iguais.
 
 – Condição de fim de jogo, exibindo a pontuação (número de tentativas) final.
 
 – Botão para reiniciar o jogo.
+
+### 1.0v (atual)
+– Ao final de cada partida, o jogo deve solicitar o nome do jogador junto com a exibição do seu resultado.
+
+– O placar (número de tentativas e nome do jogador) deve ser salvo em um arquivo JSON, YAML ou CSV.
+
+– Implementar uma tela adicional com os 10 melhores placares, ordenados do menor número de tentativas para o maior.
+
 ## Estrutura do Projeto
 
 **scr/main/java**: Código fonte principal.
 
 **scr/test/java**: Testes unitários JUnit.
 
-**docs**: Documentação html javaDoc.
+**/docs**: Documentação html javaDoc.
+
+**/placares**: Pasta onde são salvos arquivos JSON com números de tentativas de cada jogador.
+
+**/release**: Pasta com versões todas as versões do jogo da memória.

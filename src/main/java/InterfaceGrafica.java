@@ -89,7 +89,7 @@ public class InterfaceGrafica extends JFrame {
         carta2.addActionListener(e -> processarClique(carta2));
         carta3.addActionListener(e -> processarClique(carta3));
         carta4.addActionListener(e -> processarClique(carta4));
-        carta5.addActionListener(ActionEvent -> processarClique(carta5));
+        carta5.addActionListener(e -> processarClique(carta5));
 
         add(carta1);
         add(carta2);
@@ -153,6 +153,11 @@ public class InterfaceGrafica extends JFrame {
         return conteudocarta1.equals(conteudocarta2);
     }
 
+    /**
+     * Executada para anunciar que o jogador venceu, finalizar o jogo, salvar nome e pontuação do jogador.
+     * @see PontuacaoJogador,JFrame,JButton,JLabel,JTextField
+     * @since 1.0v
+     */
     private void janelaVencedor(){
         janelaVencedor = new JFrame("VOCE VENCEU!!!");
         janelaVencedor.setSize(500,500);
@@ -184,7 +189,11 @@ public class InterfaceGrafica extends JFrame {
                 PontuacaoJogador pontuacaojogador = new PontuacaoJogador();
                 String nomeJogador = textoJanelaVencedorNomeJogador.getText();
 
-                pontuacaojogador.setNomeJogador(nomeJogador);
+                if (nomeJogador.isEmpty()){
+                    pontuacaojogador.setNomeJogador("Anonimo");
+                }else{
+                    pontuacaojogador.setNomeJogador(nomeJogador);
+                }
                 pontuacaojogador.setTentativasJogador(tentativas);
 
                 pontuacaojogador.gerarJSON();
@@ -205,6 +214,11 @@ public class InterfaceGrafica extends JFrame {
         janelaVencedor.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
     }
 
+    /**
+     * Cria uma janela com uma tabela de melhores jogadores ranqueados baseado em número de tentativas.
+     * @see DefaultTableModel,JFrame,JTable,JScrollPane,Object
+     * @since 1.0v
+     */
     private void janelaPlacarTop10Vencedores(){
         janelaTop10Vencedores = new JFrame("PLACAR TOP 10 JOGADORES");
         janelaTop10Vencedores.setSize(400,300);
