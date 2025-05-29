@@ -3,6 +3,7 @@ import org.junit.jupiter.api.Test;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -35,13 +36,14 @@ public class InterfaceGraficaTest {
         SwingUtilities.invokeAndWait(() ->{
             interfaceGrafica = new InterfaceGrafica();
             interfaceGrafica.setVisible(true);
+            deletarArquivoPontuacoes();
             cartas = obterCartasDoFrame();
             botoes = obterBotoesDoFrame();
         });
     }
 
     /**
-     * Testa se a tabela de placar contém dados, NECESSÁRIO DELETAR QUALQUER ARQUIVO JA EXISTENTE NA PASTA /placares ANTES DE REALIZAR ESTE TESTE.
+     * Testa se a tabela de placar contém dados.
      * @throws Exception
      */
     @Test
@@ -51,6 +53,8 @@ public class InterfaceGraficaTest {
         jogador1.setNomeJogador("Jogador A");
         jogador1.setTentativasJogador(5);
         jogador1.gerarJSON();
+
+
 
         PontuacaoJogador jogador2 = new PontuacaoJogador();
         jogador2.setNomeJogador("Jogador B");
@@ -299,5 +303,23 @@ public class InterfaceGraficaTest {
 
         }
         return botoesList;
+    }
+
+    /**
+     * Verifica se o arquivo ja existe e deleta ele caso já tenha sido criado
+     * @see File
+     */
+    public void deletarArquivoPontuacoes() {
+        File arquivo = new File("placares/pontuacoes.json");
+
+        if (arquivo.exists()) {
+            if (arquivo.delete()) {
+                System.out.println("Arquivo pontuacoes.json deletado com sucesso.");
+            } else {
+                System.out.println("Falha ao deletar o arquivo.");
+            }
+        } else {
+            System.out.println("Arquivo não existe.");
+        }
     }
 }

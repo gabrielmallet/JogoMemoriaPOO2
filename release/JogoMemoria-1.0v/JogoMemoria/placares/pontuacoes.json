@@ -1,0 +1,7 @@
+[ {
+  "nomeJogador" : "Jogador A",
+  "tentativasJogador" : 5
+}, {
+  "nomeJogador" : "Jogador B",
+  "tentativasJogador" : 8
+} ]

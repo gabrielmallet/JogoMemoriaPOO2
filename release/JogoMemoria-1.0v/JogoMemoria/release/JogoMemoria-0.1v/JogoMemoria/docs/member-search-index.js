@@ -1,1 +1,0 @@
-memberSearchIndex = [{"p":"<Unnamed>","c":"Cartas","l":"getConteudo()"},{"p":"<Unnamed>","c":"Cartas","l":"isVirada()"},{"p":"<Unnamed>","c":"Main","l":"Main()","u":"%3Cinit%3E()"},{"p":"<Unnamed>","c":"Main","l":"main(String[])","u":"main(java.lang.String[])"},{"p":"<Unnamed>","c":"Cartas","l":"virar()"}];updateSearchResults();
