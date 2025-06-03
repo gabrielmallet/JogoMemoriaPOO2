@@ -5,7 +5,10 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.security.cert.PolicyNode;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
+import java.util.Random;
 
 /**
  * Classe que roda a interface gráfica e lógica do jogo.
@@ -52,6 +55,7 @@ public class InterfaceGrafica extends JFrame {
         JButton botaoreiniciarjogo = new JButton("Reiniciar");
         botaoreiniciarjogo.setBounds(500,800,100,50);
         add(botaoreiniciarjogo);
+
         botaoreiniciarjogo.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -65,6 +69,7 @@ public class InterfaceGrafica extends JFrame {
                 pontuacao = 0;
                 atualizarTextoPontuacao();
                 atualizarTextoTentativas();
+
             }
         });
 
@@ -78,24 +83,23 @@ public class InterfaceGrafica extends JFrame {
             }
         });
 
-        //CRIAÇÂO DE CARTAS
-        Cartas carta1 = new Cartas("carta1",200,10);
-        Cartas carta2 = new Cartas("carta2",10,10);
-        Cartas carta3 = new Cartas("carta1",500,10);
-        Cartas carta4 = new Cartas("carta3",200,100);
-        Cartas carta5 = new Cartas("carta3",500,100);
 
-        carta1.addActionListener(e -> processarClique(carta1));
-        carta2.addActionListener(e -> processarClique(carta2));
-        carta3.addActionListener(e -> processarClique(carta3));
-        carta4.addActionListener(e -> processarClique(carta4));
-        carta5.addActionListener(e -> processarClique(carta5));
+        // Criação de Array para as cartas
+        List<String> nomes = Arrays.asList("carta1", "carta1", "carta2", "carta2", "carta3", "carta3", "carta4", "carta4", "carta5", "carta5", "carta6", "carta6");
 
-        add(carta1);
-        add(carta2);
-        add(carta3);
-        add(carta4);
-        add(carta5);
+        // Embaralha os nomes
+        Collections.shuffle(nomes);
+
+        // Cria as cartas com os nomes aleatórios
+        for (int i = 0; i < nomes.size(); i++) {
+            String nome = nomes.get(i);
+            int x = 10 + (i % 4) * 250;
+            int y = 10 + (i / 4) * 150;
+            Cartas carta = new Cartas(nome,x,y);
+            carta.addActionListener(e -> processarClique(carta));
+            add(carta);
+        }
+
 
         setVisible(true);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -135,7 +139,7 @@ public class InterfaceGrafica extends JFrame {
 
         }
 
-        if (pontuacao == 2) {janelaVencedor();} //Verifica se o jogo atingiu a condição de vitória
+        if (pontuacao == 6) {janelaVencedor();} //Verifica se o jogo atingiu a condição de vitória
     }
 
     /**
